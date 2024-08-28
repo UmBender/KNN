@@ -1,4 +1,5 @@
 #pragma once
+#include "../CellValue/CellValue.hpp"
 #include "../distances/distances.hpp"
 #include <algorithm>
 #include <cctype>
@@ -11,21 +12,22 @@
 
 class KNN {
 private:
-  std::vector<std::vector<double>> atributes;
+  std::vector<std::vector<CellValue>> atributes;
   std::vector<std::string> sample_class;
   std::set<std::string> type_classes;
-  std::function<double(std::vector<double> &, std::vector<double> &)> metric;
+  std::function<double(std::vector<CellValue> &, std::vector<CellValue> &)>
+      metric;
   unsigned int k;
 
 public:
-  KNN(std::vector<std::vector<double>> &atributes,
+  KNN(std::vector<std::vector<CellValue>> &atributes,
       std::vector<std::string> &sample_class, unsigned int k);
-  KNN(std::vector<std::vector<double>> &atributes,
+  KNN(std::vector<std::vector<CellValue>> &atributes,
       std::vector<std::string> &sample_class);
-  KNN(std::vector<std::vector<double>> &atributes,
+  KNN(std::vector<std::vector<CellValue>> &atributes,
       std::vector<std::string> &sample_class, unsigned int k,
-      std::function<double(std::vector<double> &, std::vector<double> &)>
+      std::function<double(std::vector<CellValue> &, std::vector<CellValue> &)>
           metric);
 
-  std::vector<std::string> clasify(std::vector<double> a);
+  std::vector<std::string> clasify(std::vector<CellValue> a);
 };

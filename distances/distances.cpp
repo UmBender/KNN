@@ -1,7 +1,7 @@
 #include "distances.hpp"
 
-double std::euclidean_dist(const std::vector<double> &a,
-                           const std::vector<double> &b) {
+double std::euclidean_dist(const std::vector<CellValue> &a,
+                           const std::vector<CellValue> &b) {
   if (a.size() != b.size()) {
     return -1.0;
   }
@@ -12,8 +12,8 @@ double std::euclidean_dist(const std::vector<double> &a,
   return std::sqrt(accumulator);
 }
 
-double std::manhattan_dist(const std::vector<double> &a,
-                           const std::vector<double> &b) {
+double std::manhattan_dist(const std::vector<CellValue> &a,
+                           const std::vector<CellValue> &b) {
 
   if (a.size() != b.size()) {
     return -1.0;
@@ -25,8 +25,8 @@ double std::manhattan_dist(const std::vector<double> &a,
   return accumulator;
 }
 
-double std::chebyshev_dist(const std::vector<double> &a,
-                           const std::vector<double> &b) {
+double std::chebyshev_dist(const std::vector<CellValue> &a,
+                           const std::vector<CellValue> &b) {
   if (a.size() != b.size()) {
     return -1.0;
   }

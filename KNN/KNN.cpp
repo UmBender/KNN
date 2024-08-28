@@ -1,5 +1,5 @@
 #include "KNN.hpp"
-KNN::KNN(std::vector<std::vector<double>> &new_atributes,
+KNN::KNN(std::vector<std::vector<CellValue>> &new_atributes,
          std::vector<std::string> &new_sample_class, unsigned int new_k)
     : atributes(new_atributes), sample_class(new_sample_class),
       metric(std::euclidean_dist), k(new_k) {
@@ -7,7 +7,7 @@ KNN::KNN(std::vector<std::vector<double>> &new_atributes,
     type_classes.insert(i);
   }
 }
-KNN::KNN(std::vector<std::vector<double>> &new_atributes,
+KNN::KNN(std::vector<std::vector<CellValue>> &new_atributes,
          std::vector<std::string> &new_sample_class)
     : atributes(new_atributes), sample_class(new_sample_class),
       metric(std::euclidean_dist), k(1) {
@@ -15,17 +15,19 @@ KNN::KNN(std::vector<std::vector<double>> &new_atributes,
     type_classes.insert(i);
   }
 }
-KNN::KNN(std::vector<std::vector<double>> &new_atributes,
-         std::vector<std::string> &new_sample_class, unsigned int new_k,
-         std::function<double(std::vector<double> &, std::vector<double> &)>
-             new_metric)
+KNN::KNN(
+    std::vector<std::vector<CellValue>> &new_atributes,
+    std::vector<std::string> &new_sample_class, unsigned int new_k,
+    std::function<double(std::vector<CellValue> &, std::vector<CellValue> &)>
+        new_metric)
     : atributes(new_atributes), sample_class(new_sample_class),
       metric(new_metric), k(new_k) {
   for (std::string i : type_classes) {
     type_classes.insert(i);
   }
 }
-std::vector<std::string> KNN::clasify(std::vector<double> a) {
+
+std::vector<std::string> KNN::clasify(std::vector<CellValue> a) {
   std::vector<std::pair<double, std::string>> objects;
   for (size_t i{0}; i < sample_class.size(); ++i) {
     double distance = metric(atributes[i], a);

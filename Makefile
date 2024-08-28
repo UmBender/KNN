@@ -13,7 +13,7 @@ TARGET_DEV = main-dev
 TARGET_RELEASE = main 
 
 # Source files
-SRCS = main.cpp  distances/distances.cpp KNN/KNN.cpp CSV/CSV.cpp
+SRCS = main.cpp  distances/distances.cpp KNN/KNN.cpp CSV/CSV.cpp CellValue/CellValue.cpp
 
 # Object files
 OBJS_DEV = $(SRCS:.cpp=-dev.o)

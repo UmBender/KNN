@@ -1,4 +1,5 @@
 #include "CSV/CSV.hpp"
+#include "CellValue/CellValue.hpp"
 #include "KNN/KNN.hpp"
 #include "distances/distances.hpp"
 
@@ -9,7 +10,7 @@ int main(void) {
   CSV csv_train("iris/iris_train.csv");
   CSV csv_test("iris/iris_test.csv");
   auto [attr, obj_class] = csv_train.get_set();
-  std::vector<std::pair<std::string, std::vector<double>>> data =
+  std::vector<std::pair<std::string, std::vector<CellValue>>> data =
       csv_test.matrix_form();
 
   /*
